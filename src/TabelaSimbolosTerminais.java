@@ -13,6 +13,11 @@ public class TabelaSimbolosTerminais implements Serializable{
 	public TabelaSimbolosTerminais() {
 		indices = new Integer[2*n + 20];
 		simbolos = new String[2*n + 20];
+		simbolos[2*n] ="ID";
+		simbolos[2*n+1] ="NUMBER";
+		simbolos[2*n+2] ="REAL";
+		simbolos[2*n+3] ="ALPHA";
+		simbolos[2*n+4] ="EOF";
 	}
 	
 	private int getIndice(String cadeia){
@@ -49,9 +54,6 @@ public class TabelaSimbolosTerminais implements Serializable{
 	private int hash(String cadeia){
 		return Math.abs(cadeia.hashCode()%TabelaSimbolosTerminais.n);
 	}
-	
-	
-	
 	
 	public enum Modo{
 		CONSULTA, INSERCAO;
