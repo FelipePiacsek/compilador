@@ -1,6 +1,7 @@
 package lexico;
 import static java.nio.file.Files.exists;
 import static java.nio.file.Paths.get;
+import static lexico.TabelaSimbolosTerminais.n;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -15,21 +16,30 @@ import java.util.List;
 
 public class TabelaSimbolosTerminaisRepository {
 
-	private TabelaSimbolosTerminais createTableFromTextFile(){
-		TabelaSimbolosTerminais tabela = new TabelaSimbolosTerminais();
+	public List<String> readFromFile(){
 		List<String> lines;
 		try {
-			lines = Files.readAllLines(Paths.get("C:\\Development\\Workspace\\Compilador\\bin\\words.txt"), Charset.defaultCharset());
-			for (String line : lines) {
-				tabela.insereBusca(line, TabelaSimbolosTerminais.Modo.INSERCAO);
-			}
-			saveTable(tabela);
-			return tabela;
+			lines = Files.readAllLines(Paths.get("C:\\Development\\Workspace\\Compilador\\bin\\words.txt"), Charset.forName("UTF-8"));
+			return lines;
 		} catch (IOException e) {
 			System.out.println("Erro ao abrir o arquivo texto com os dados da tabela.");
 			e.printStackTrace();
 		}
 		return null;
+		
+	}
+
+	private TabelaSimbolosTerminais createTableFromTextFile(){
+		TabelaSimbolosTerminais tabela = new TabelaSimbolosTerminais();
+		List<String> palavras = readFromFile();
+		if(palavras.size() > 2*n*0.65){
+			throw new RuntimeException("A quantidade de símbolos não pode superar " + Math.round(2*n*0.65) + ".");
+		}
+		for (String palavra : palavras) {
+			tabela.insereBusca(palavra, TabelaSimbolosTerminais.Modo.INSERCAO);
+		}
+		saveTable(tabela);
+		return tabela;
 	}
 	
 	private void saveTable(TabelaSimbolosTerminais tabela){
@@ -57,7 +67,6 @@ public class TabelaSimbolosTerminaisRepository {
 			System.out.println("Tabela lida do arquivo binário com sucesso.");
 			return tabela;
 		} catch (IOException | ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			System.out.println("Erro ao carregar a tabela do arquivo binário.");
 			e.printStackTrace();
 		} 
