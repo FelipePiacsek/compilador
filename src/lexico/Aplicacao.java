@@ -1,4 +1,8 @@
 package lexico;
+/**
+ * Classe para teste da Tabela de Símbolos Terminais.
+ * @author FPiacsek
+ */
 public class Aplicacao {
 
 	public static void main(String[] args) {
