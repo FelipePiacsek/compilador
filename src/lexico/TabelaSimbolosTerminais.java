@@ -1,3 +1,4 @@
+package lexico;
 import java.io.Serializable;
 
 public class TabelaSimbolosTerminais implements Serializable{

@@ -1,3 +1,4 @@
+package lexico;
 import static java.nio.file.Files.exists;
 import static java.nio.file.Paths.get;
 
@@ -52,7 +53,7 @@ public class TabelaSimbolosTerminaisRepository {
 		try {
 			fin = new FileInputStream("C:\\Development\\Workspace\\Compilador\\bin\\words.blob");
 			ois = new ObjectInputStream(fin);
-			TabelaSimbolosTerminais tabela = (TabelaSimbolosTerminais) ois.readObject();
+			TabelaSimbolosTerminais tabela = (lexico.TabelaSimbolosTerminais) ois.readObject();
 			System.out.println("Tabela lida do arquivo binário com sucesso.");
 			return tabela;
 		} catch (IOException | ClassNotFoundException e) {
