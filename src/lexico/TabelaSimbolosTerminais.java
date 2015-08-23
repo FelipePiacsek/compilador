@@ -57,7 +57,7 @@ public class TabelaSimbolosTerminais implements Serializable {
 	}
 
 	private int hash(String cadeia) {
-		return Math.abs(cadeia.hashCode() % TabelaSimbolosTerminais.n);
+		return Math.abs(cadeia.hashCode() % n);
 	}
 
 	public enum Modo {
