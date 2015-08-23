@@ -94,4 +94,8 @@ public class TabelaSimbolosTerminais implements Serializable {
 		}
 		return c;
 	}
+	
+	public String getSimbolo(int index){
+		return simbolos[index];
+	}
 }
