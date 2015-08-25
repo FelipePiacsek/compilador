@@ -17,7 +17,7 @@ public class TabelaSimbolosTerminaisTeste{
 	}
 	
 	public void validateTable(){
-		List<String> palavras = repository.readFromFile();
+		List<String> palavras = repository.readWordsFromTextFile();
 		System.out.println(palavras.size() + " palavras.");
 		List<String> erros = new ArrayList<String>();
 		for (String palavra : palavras) {
