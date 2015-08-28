@@ -36,6 +36,8 @@ public class TabelaSimbolosTerminais implements Serializable {
 		return index;
 	}
 
+	//ToDo: Devolver índice e não inserir novamente.
+	//ToDo: Mudar algoritmo.
 	private int putSimbolo(String simbolo) {
 		int index = this.hash(simbolo);
 		if (simbolos[index] == null) {
@@ -59,6 +61,7 @@ public class TabelaSimbolosTerminais implements Serializable {
 	private int hash(String cadeia) {
 		return Math.abs(cadeia.hashCode() % n);
 	}
+	
 
 	public enum Modo {
 		CONSULTA, INSERCAO;
